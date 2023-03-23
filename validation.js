@@ -35,6 +35,8 @@ function addInputsListeners() {
 function addButtonsListeners() {
   showBtn.addEventListener("mousedown", handleMouseDown);
   showBtn.addEventListener("mouseup", handleMouseUp);
+  showBtn.addEventListener("touchstart", handleMouseDown);
+  showBtn.addEventListener("touchend", handleMouseUp);
 
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
