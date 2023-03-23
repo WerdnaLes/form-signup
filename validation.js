@@ -4,12 +4,12 @@ const showBtn = document.getElementById("show-button");
 const passInput = document.getElementById("password");
 let intervalId;
 const submitBtn = document.getElementById("submit-button");
+const passP = document.querySelector("#pass-p");
 let isFormValid = true;
 let neededFieldsCount = 0;
 
 const patterns = {
   username: /^\w{5,12}$/,
-  //   email: /^[\w\-\.]+@[\w-]+\.[a-z]+?\.?[a-z]+$/,
   email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
   password: /^[\w\-@]{8,20}$/,
   telephone: /^\d{11}$/,
@@ -43,16 +43,25 @@ function addButtonsListeners() {
 }
 // Change input's border color depending if it is valid or not:
 function validate(field, regex) {
-  if (!field.value) {
-    field.className = "empty";
-    return;
-  }
   const isValid = regex.test(field.value);
+  const fieldName = field.attributes.name.value;
+  const isPassword = fieldName === "password";
 
-  if (!isValid) {
-    field.className = "invalid";
-  } else {
+  if (field.value && isValid) {
     field.className = "valid";
+    if (isPassword) {
+      passP.className = "pValid";
+    }
+  } else if (field.value && !isValid) {
+    field.className = "invalid";
+    if (isPassword) {
+      passP.className = "pInvalid";
+    }
+  } else {
+    field.className = "empty";
+    if (isPassword) {
+      passP.className = "valid";
+    }
   }
 }
 
