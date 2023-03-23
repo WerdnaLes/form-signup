@@ -9,23 +9,12 @@ let neededFieldsCount = 0;
 
 const patterns = {
   username: /^\w{5,12}$/,
-  email: /^[\w\-\.]+@[\w-]+\.[a-z]+?\.?[a-z]+$/,
+  //   email: /^[\w\-\.]+@[\w-]+\.[a-z]+?\.?[a-z]+$/,
+  email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
   password: /^[\w\-@]{8,20}$/,
   telephone: /^\d{11}$/,
   slug: /^[a-z\d-]{8,20}$/,
 };
-
-// showBtn.addEventListener("click", (event) => {
-//   event.preventDefault()
-
-//   if (passInput.type === "password") {
-//     passInput.type = "text";
-//     showBtn.innerHTML = 'Hide'
-//   } else {
-//     passInput.type = "password";
-//     showBtn.innerHTML = 'Show'
-//   }
-// });
 
 // Add listeners to every input and check if input's value matches its regex:
 addInputsListeners();
